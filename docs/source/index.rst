@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcomes to pubSphinx's documentations already!
-===============================================
+Welcomes to pubSphinx's documentations alreadys!
+================================================
 
 .. toctree::
    :maxdepth: 2
