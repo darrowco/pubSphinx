@@ -19,7 +19,7 @@ Create directories for GitLab volumes
 
   sudo mkdir /home/GitLab
    sudo chown -R rtd: /home/GitLab
-   sudo chgrp -R 0777 /home/GitLab ### verify 0755
+   sudo chgrp -R 0777 /home/GitLab ### verify 07
 
 Run GitLab with docker
 ----------------------
@@ -37,7 +37,26 @@ Run GitLab with docker
      --volume /home/gitlab/data:/var/opt/gitlab \
      gitlab/gitlab-ce:latest
 
+Set gitlab.rb
+-------------
+.. code-block:: bash
 
+  sudo nano /home/gitlab/config/gitlab.rb
+
+    ### can be set to https
+    ### self-signed cert will be used
+    external_url 'http://192.168.1.76'
+    ### external_url 'GENERATED_EXTERNAL_URL'
+
+gitlab gui
+----------
+
+- Create a new user
+- Login as the new user
+- Top-RT: Settings
+- Left: Access tokens
+
+  :Name: rtd
 
 
 
@@ -47,5 +66,3 @@ Run GitLab with docker
 
 References
 ==========
-
-www.ucla.edu_

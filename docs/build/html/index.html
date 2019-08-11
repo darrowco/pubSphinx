@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Welcomes to pubSphinx’s documentations alreadys! &#8212; pubSphinx 0.0.1 documentation</title>
+    <title>Local ReadTheDocs, GitLab on Docker with Sync to GitHub &#8212; pubSphinx 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -37,21 +37,73 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="welcomes-to-pubsphinx-s-documentations-alreadys">
-<h1>Welcomes to pubSphinx’s documentations alreadys!<a class="headerlink" href="#welcomes-to-pubsphinx-s-documentations-alreadys" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="local-readthedocs-gitlab-on-docker-with-sync-to-github">
+<h1>Local ReadTheDocs, GitLab on Docker with Sync to GitHub<a class="headerlink" href="#local-readthedocs-gitlab-on-docker-with-sync-to-github" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-gitlab">
+<h1>Install GitLab<a class="headerlink" href="#install-gitlab" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="create-directories-for-gitlab-volumes">
+<h2>Create directories for GitLab volumes<a class="headerlink" href="#create-directories-for-gitlab-volumes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo mkdir /home/GitLab
+ sudo chown -R rtd: /home/GitLab
+ sudo chgrp -R <span class="m">0777</span> /home/GitLab <span class="c1">### verify 07</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-gitlab-with-docker">
+<h2>Run GitLab with docker<a class="headerlink" href="#run-gitlab-with-docker" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo docker run --detach <span class="se">\</span>
+   --hostname <span class="m">192</span>.168.1.76 <span class="se">\</span>
+   --publish <span class="m">443</span>:443 <span class="se">\</span>
+   --publish <span class="m">80</span>:80 <span class="se">\</span>
+   --publish <span class="m">53022</span>:22 <span class="se">\</span>
+   --name gitlab <span class="se">\</span>
+   --restart always <span class="se">\</span>
+   --volume /home/gitlab/config:/etc/gitlab <span class="se">\</span>
+   --volume /home/gitlab/logs:/var/log/gitlab <span class="se">\</span>
+   --volume /home/gitlab/data:/var/opt/gitlab <span class="se">\</span>
+   gitlab/gitlab-ce:latest
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-gitlab-rb">
+<h2>Set gitlab.rb<a class="headerlink" href="#set-gitlab-rb" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo nano /home/gitlab/config/gitlab.rb
+
+  <span class="c1">### can be set to https</span>
+  <span class="c1">### self-signed cert will be used</span>
+  external_url <span class="s1">&#39;http://192.168.1.76&#39;</span>
+  <span class="c1">### external_url &#39;GENERATED_EXTERNAL_URL&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gitlab-gui">
+<h2>gitlab gui<a class="headerlink" href="#gitlab-gui" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Create a new user</li>
+<li>Login as the new user</li>
+<li>Top-RT: Settings</li>
+<li>Left: Access tokens<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Name:</th><td class="field-body">rtd</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
 <ul class="simple">
 <li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
 <li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
 <li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
 </ul>
 </div>
-<div class="section" id="reference">
-<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
