@@ -53,12 +53,10 @@ Config repository mirror to github.com
 - projects/pubSphinx
 - Left: Settings/repository
 - Mirroring repositories
-
-:Git repository URL: https://darrowco:pubSphinx@github.com/darrowco/pubSphinx.git
-:Mirror direction: Push
-:Authentication method: Password
-:Password: ...
-
+  :Git repository URL: https://darrowco:pubSphinx@github.com/darrowco/pubSphinx.git
+  :Mirror direction: Push
+  :Authentication method: Password
+  :Password: ...
 - Button: Mirror repository
 
 gitlab gui
