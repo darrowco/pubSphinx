@@ -52,7 +52,7 @@ Config repository mirror to github.com
 
 - projects/pubSphinx
 - Left: Settings/repository
-- Mirroring repositories
+- Choose Mirroring repositories and enter data
 
   :Git repository URL: https://darrowco:pubSphinx@github.com/darrowco/pubSphinx.git
   :Mirror direction: Push
@@ -93,12 +93,14 @@ Run ReadTheDocs with docker
 ---------------------------
 .. code-block:: bash
 
-  docker run -it -v /home/rtd:/data \\\
-    -p 8000:8000 \\\
-    -e RTD_PRODUCTION_DOMAIN="localhost:8000" \\\
-    seblon/readthedocs-docker
+  docker run -it --detach -v /home/rtd:/data \\\
+  -p 8000:8000 \\\
+  -e RTD_PRODUCTION_DOMAIN="localhost:8000" \\\
+  --name readthedocs \\\
+  --restart always \\\
+  seblon/readthedocs-docker
 
-Read in Project from Gitlab Docker
+Config RTF to read in Project from Gitlab Docker
 ----------------------------------
 
 - Top-Right: Admin
