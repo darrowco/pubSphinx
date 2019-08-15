@@ -7,8 +7,10 @@ Local ReadTheDocs, GitLab on Docker with Sync to GitHub
 =======================================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+  :maxdepth: 2
+  :caption: Contents:
+
+  Features
 
 Install GitLab
 ==============
