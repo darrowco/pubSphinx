@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Local ReadTheDocs, GitLab on Docker with a Sync to GitHubszz
-============================================================
+Local ReadTheDocs, GitLab on Docker with a Sync to GitHubszzz
+=============================================================
 
 .. toctree::
   :maxdepth: 2
